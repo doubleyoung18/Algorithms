@@ -7,7 +7,9 @@
 @Desc:最佳调度问题（回溯法）
 """
 
-def backtrack(depth, cost):
+min = float("inf")
+
+def backtrack(depth, cost, count):
     """
     回溯求解最佳调度时间和方案
     :param depth: 搜索深度
@@ -31,7 +33,7 @@ def backtrack(depth, cost):
             machine[i] += time[depth]
             if machine[i] < min:  # 上界剪枝2
                 dispatch[depth] = i+1
-                backtrack(depth+1, max(cost, machine[i]))
+                backtrack(depth+1, max(cost, machine[i]), count)
             machine[i] -= time[depth]
     return
 
@@ -45,7 +47,7 @@ if __name__ == "__main__":
     min = float("inf")  # 最佳用时（初始化为无穷）
     best = []  # 最佳调度方案
     count = 0  # 递归次数
-    backtrack(0, 0)
+    backtrack(0, 0, 0)
     print("最佳调度时间：", min)
     print("方案递归次数：", count)
     print("最佳调度方案：", best)
@@ -55,7 +57,7 @@ if __name__ == "__main__":
     min = float("inf")  # 最佳用时（初始化为无穷）
     best = []  # 最佳调度方案
     count = 0  # 递归次数
-    backtrack(0, 0)
+    backtrack(0, 0, 0)
     print("最佳调度时间：", min)
     print("方案递归次数：", count)
     print("最佳调度方案：", best)
@@ -65,7 +67,7 @@ if __name__ == "__main__":
     min = float("inf")  # 最佳用时（初始化为无穷）
     best = []  # 最佳调度方案
     count = 0  # 递归次数
-    backtrack(0, 0)
+    backtrack(0, 0, 0)
     print("最佳调度时间：", min)
     print("最佳调度方案：", best)
     print("方案递归次数：", count)
